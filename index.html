@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="kecha">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Girih — Samarqand koshinlari geometriyasi</title>
+<meta name="description" content="Samarqand koshinlaridagi yulduzli naqshlar qanday quriladi. Brauzerda o‘z naqshingizni chizing va PNG qilib saqlang." />
+<meta name="theme-color" content="#071426" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<a class="skip" href="#asosiy">Asosiy qismga o‘tish</a>
+
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- ============ SARLAVHA / NAVIGATSIYA ============ -->
+<header class="topbar" id="topbar">
+  <a href="#hero" class="brand">
+    <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+      <polygon points="20,2 25,13 37,13 27,21 31,33 20,26 9,33 13,21 3,13 15,13" />
+    </svg>
+    <span>Girih</span>
+  </a>
+
+  <nav class="menu" id="menu" aria-label="Asosiy menyu">
+    <a href="#naqsh">Naqsh</a>
+    <a href="#bosqich">Bosqichlar</a>
+    <a href="#turlar">Turlari</a>
+    <a href="#ustaxona">Ustaxona</a>
+    <a href="#rang">Ranglar</a>
+    <a href="#obida">Obidalar</a>
+  </nav>
+
+  <div class="topbar__end">
+    <button class="switch" id="themeBtn" type="button" aria-pressed="false">
+      <span class="switch__label" id="themeLabel">Kunduz</span>
+    </button>
+    <button class="burger" id="burger" type="button" aria-label="Menyuni ochish" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="asosiy">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <div class="hero__text">
+      <p class="hero__kicker">Sirli naqsh ortida oddiy qoida turadi</p>
+      <h1 class="hero__title">Bir doira,<br />o‘n ikki nuqta<br />va cheksiz naqsh</h1>
+      <p class="hero__lead">
+        Samarqand koshinlaridagi yulduzlar sehr emas. Ular sirkul va chizg‘ich bilan
+        chiziladigan aniq geometriya — olti asr avval ustalar qanday chizgan bo‘lsa,
+        bugun ham xuddi shunday chiziladi.
+      </p>
+      <div class="hero__btns">
+        <a class="btn btn--gold" href="#ustaxona">Naqsh chizish</a>
+        <a class="btn btn--line" href="#bosqich">Qanday quriladi</a>
+      </div>
+    </div>
+
+    <a class="hero__down" href="#naqsh">pastga</a>
+  </section>
+
+  <!-- ============ NAQSH HAQIDA ============ -->
+  <section class="wrap section" id="naqsh">
+    <div class="two">
+      <div>
+        <h2 class="h2">Girih — “tugun” degani</h2>
+        <p class="prose">
+          Fors tilidan olingan bu so‘z naqsh chiziqlari kesishgan joyni bildiradi.
+          Usta devorga birorta rasm chizmaydi: u faqat doira, radius va tutashtiruvchi
+          chiziqlar bilan ishlaydi. Qolgani — takrorlanishning ishi.
+        </p>
+        <p class="prose">
+          Shuning uchun bitta naqshni Registondagi peshtoqda ham, kichkina kosaning
+          gardishida ham ko‘rish mumkin. O‘lchov o‘zgaradi, qoida o‘zgarmaydi.
+        </p>
+      </div>
+      <figure class="cardish">
+        <canvas id="miniCanvas" width="460" height="460" aria-label="Yulduzli naqsh namunasi"></canvas>
+        <figcaption>Sakkiz nurli yulduz va uni o‘rab turgan panjara</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ BOSQICHLAR ============ -->
+  <section class="wrap section" id="bosqich">
+    <h2 class="h2 h2--mid">Naqsh besh qadamda quriladi</h2>
+
+    <div class="steps">
+      <figure class="cardish cardish--tight">
+        <canvas id="stepCanvas" width="520" height="520" aria-live="polite" aria-label="Naqsh qurilish bosqichi"></canvas>
+      </figure>
+
+      <div class="steps__side">
+        <ol class="steps__list" id="stepList">
+          <li data-step="1"><b>Doira</b><span>Hamma narsa bitta doiradan boshlanadi. U naqshning chegarasi va o‘lchov birligi.</span></li>
+          <li data-step="2"><b>Nuqtalar</b><span>Aylana teng bo‘laklarga bo‘linadi. Bo‘laklar soni naqshning butun xarakterini belgilaydi.</span></li>
+          <li data-step="3"><b>Ko‘pburchak</b><span>Qo‘shni nuqtalar tutashtirilsa, muntazam ko‘pburchak hosil bo‘ladi.</span></li>
+          <li data-step="4"><b>Yulduz</b><span>Endi nuqtalar bittadan oshirib tutashtiriladi — ko‘pburchak yulduzga aylanadi.</span></li>
+          <li data-step="5"><b>Takror</b><span>Yulduz panjara bo‘ylab ko‘chiriladi. Shu yerda koshin tug‘iladi.</span></li>
+        </ol>
+
+        <div class="steps__nav">
+          <button class="btn btn--line btn--sm" id="prevStep" type="button">Oldingi</button>
+          <button class="btn btn--gold btn--sm" id="nextStep" type="button">Keyingi</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NAQSH TURLARI ============ -->
+  <section class="wrap section" id="turlar">
+    <h2 class="h2">Olti xil naqsh oilasi</h2>
+    <p class="prose">
+      Har biri boshqa qoidadan o‘sib chiqadi: biri kvadratdan, biri olti burchakdan,
+      biri doiradan. Birortasini bosing — ustaxonaga tushadi.
+    </p>
+
+    <ul class="gallery" id="gallery">
+      <li><button type="button" data-tur="rozetta">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Rozetta</b><small>Kvadrat panjara ustida ko‘p nurli yulduz. Registon peshtoqlaridagi eng tanish naqsh.</small>
+      </button></li>
+
+      <li><button type="button" data-tur="olti">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Olti burchak</b><small>Asalari uyasi kabi to‘r. Har katakda yulduz o‘tiradi, chetlari qo‘shnisi bilan tutashadi.</small>
+      </button></li>
+
+      <li><button type="button" data-tur="xatam">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Xatam</b><small>Ikkita bir xil ko‘pburchak burilib ustma-ust tushadi — yulduz va xoch paydo bo‘ladi.</small>
+      </button></li>
+
+      <li><button type="button" data-tur="gul">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Gul</b><small>Faqat doiralardan: tegib turgan aylanalar ichida gulbarglar ochiladi.</small>
+      </button></li>
+
+      <li><button type="button" data-tur="panjara">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Panjara</b><small>Sakkiz burchak va kvadrat navbatlashadi. Ganch to‘siqlar shu qoida bilan o‘yiladi.</small>
+      </button></li>
+
+      <li><button type="button" data-tur="kufiy">
+        <canvas width="360" height="260" aria-hidden="true"></canvas>
+        <b>Kufiy</b><small>Egri chiziq yo‘q. G‘ishtdek terilgan to‘g‘ri burchaklar — xat va naqsh bir vaqtda.</small>
+      </button></li>
+    </ul>
+  </section>
+
+  <!-- ============ USTAXONA ============ -->
+  <section class="section section--band" id="ustaxona">
+    <div class="wrap">
+      <h2 class="h2 h2--mid">Naqsh ustaxonasi</h2>
+      <p class="prose prose--mid">
+        Avval naqsh turini tanlang, keyin tugmalarni suring — naqsh shu zahoti qayta chiziladi.
+        Yoqqanini PNG qilib saqlab oling.
+      </p>
+
+      <div class="studio">
+        <div class="studio__stage">
+          <canvas id="studioCanvas" aria-label="Siz yaratayotgan naqsh"></canvas>
+        </div>
+
+        <form class="panel" id="panel" autocomplete="off">
+          <div class="ctrl">
+            <span class="ctrl__top">Naqsh turi</span>
+            <div class="chips" id="chips" role="group" aria-label="Naqsh turini tanlash">
+              <button type="button" data-tur="rozetta" class="is-on">Rozetta</button>
+              <button type="button" data-tur="olti">Olti burchak</button>
+              <button type="button" data-tur="xatam">Xatam</button>
+              <button type="button" data-tur="gul">Gul</button>
+              <button type="button" data-tur="panjara">Panjara</button>
+              <button type="button" data-tur="kufiy">Kufiy</button>
+            </div>
+          </div>
+
+          <label class="ctrl">
+            <span class="ctrl__top">Nur / bo‘lak soni <output id="outFold">8</output></span>
+            <input type="range" id="fold" min="5" max="14" step="1" value="8" />
+          </label>
+
+          <label class="ctrl">
+            <span class="ctrl__top">Katak o‘lchami <output id="outCell">150</output></span>
+            <input type="range" id="cell" min="90" max="280" step="2" value="150" />
+          </label>
+
+          <label class="ctrl">
+            <span class="ctrl__top">Chiziq qalinligi <output id="outLine">1.6</output></span>
+            <input type="range" id="lw" min="0.6" max="4" step="0.2" value="1.6" />
+          </label>
+
+          <label class="ctrl">
+            <span class="ctrl__top">Burilish <output id="outRot">0°</output></span>
+            <input type="range" id="rot" min="0" max="90" step="1" value="0" />
+          </label>
+
+          <label class="check">
+            <input type="checkbox" id="grid" checked />
+            <span>Panjara ko‘rinsin</span>
+          </label>
+
+          <div class="panel__btns">
+            <button class="btn btn--line btn--sm" id="randomBtn" type="button">Tasodifiy</button>
+            <button class="btn btn--gold btn--sm" id="saveBtn" type="button">PNG saqlash</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RANGLAR ============ -->
+  <section class="wrap section" id="rang">
+    <h2 class="h2">Koshin ranglari</h2>
+    <p class="prose">
+      Ustalar rangni cheksiz tanlamagan: har biri alohida mineraldan olingan.
+      Rangni bosing — ustaxonadagi naqsh o‘sha bo‘yoqqa o‘tadi.
+    </p>
+
+    <ul class="paints" id="paints">
+      <li><button type="button" data-hex="#D8A442"><i style="--c:#D8A442"></i><b>Oltin</b><small>#D8A442</small></button></li>
+      <li><button type="button" data-hex="#16A5A8"><i style="--c:#16A5A8"></i><b>Feruza</b><small>#16A5A8</small></button></li>
+      <li><button type="button" data-hex="#3E7BD6"><i style="--c:#3E7BD6"></i><b>Lojuvard</b><small>#3E7BD6</small></button></li>
+      <li><button type="button" data-hex="#F1E9DA"><i style="--c:#F1E9DA"></i><b>Ganch</b><small>#F1E9DA</small></button></li>
+      <li><button type="button" data-hex="#B4603A"><i style="--c:#B4603A"></i><b>Sopol</b><small>#B4603A</small></button></li>
+    </ul>
+  </section>
+
+  <!-- ============ OBIDALAR ============ -->
+  <section class="wrap section" id="obida">
+    <h2 class="h2">Bu naqshlarni qayerda ko‘rasiz</h2>
+    <dl class="registry">
+      <div><dt>Registon maydoni</dt><dd>Samarqand</dd><dd class="registry__y">XV–XVII asr</dd></div>
+      <div><dt>Shohi Zinda</dt><dd>Samarqand</dd><dd class="registry__y">XI–XV asr</dd></div>
+      <div><dt>Bibixonim masjidi</dt><dd>Samarqand</dd><dd class="registry__y">1399–1404</dd></div>
+      <div><dt>Go‘ri Amir</dt><dd>Samarqand</dd><dd class="registry__y">1404</dd></div>
+      <div><dt>Ichan qal’a</dt><dd>Xiva</dd><dd class="registry__y">XVIII–XIX asr</dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <p>Sahifadagi barcha naqshlar brauzeringizda, real vaqtda chiziladi. Birorta rasm yuklanmaydi.</p>
+    <a class="btn btn--line btn--sm" href="#hero">Yuqoriga</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
